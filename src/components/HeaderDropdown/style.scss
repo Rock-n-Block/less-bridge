@@ -4,7 +4,7 @@
 $fs: 12px;
 
 .header-dropdown {
-  @include flex(row,center,center,nowrap);
+  @include flex(row, center, center, nowrap);
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
@@ -19,7 +19,7 @@ $fs: 12px;
   letter-spacing: 2px;
 
   &-open {
-    @include flex(row,center,center);
+    @include flex(row, center, center);
     box-sizing: border-box;
     position: relative;
     cursor: pointer;
@@ -32,7 +32,7 @@ $fs: 12px;
   }
 
   &-round {
-    @include flex(row,center,center,nowrap);
+    @include flex(row, center, center, nowrap);
     margin: 0 5px 0 5px;
     height: 40px;
     box-sizing: border-box;
@@ -49,7 +49,7 @@ $fs: 12px;
   }
 
   &-round:hover {
-    @include flex(row,center,center,nowrap);
+    @include flex(row, center, center, nowrap);
     margin: 0 5px 0 5px;
     height: 40px;
     box-sizing: border-box;
@@ -121,7 +121,7 @@ $fs: 12px;
   }
 
   &-item {
-    @include flex(row,center);
+    @include flex(row, center);
     text-decoration: none;
     word-wrap: normal;
     white-space: nowrap;
@@ -137,7 +137,7 @@ $fs: 12px;
   }
 
   &-item:hover {
-    @include flex(row,center);
+    @include flex(row, center);
     padding: 0px 15px;
     line-height: 50px;
     cursor: pointer;
@@ -145,19 +145,20 @@ $fs: 12px;
   }
 
   &-label {
-    @include flex(row,center,space-between);
+    @include flex(row, center, space-between);
     height: 100%;
     padding: 10px 15px;
     font-size: $fs;
     &-left {
-      @include flex(row,center,space-between);
+      @include flex(row, center, space-between);
+      padding: 5px 10px;
       font-size: $fs;
       pointer-events: none;
     }
   }
 
   &-label-round {
-    @include flex(row,center,space-between);
+    @include flex(row, center, space-between);
     padding: 8px 8px;
   }
 
@@ -184,7 +185,7 @@ $fs: 12px;
 }
 
 .header-dropdown:hover {
-  @include flex(row,center,center,nowrap);
+  @include flex(row, center, center, nowrap);
   box-sizing: border-box;
   position: relative;
   cursor: pointer;

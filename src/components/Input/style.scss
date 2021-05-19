@@ -4,20 +4,36 @@
 .input-container {
   @include flex(column);
   width: 100%;
-  min-height: 62px;
+  min-height: 90px;
   box-sizing: border-box;
   position: relative;
-  background-color: $lightgrey;
+  background-color: #ffffff;
+  border: 1px solid #ced4ec;
+  box-shadow: 0px 30px 50px rgba(84, 84, 212, 0.1);
   margin: 5px 0 0 0;
-  border-radius: 8px;
+  overflow: hidden;
+  border-radius: 36px;
   &-inner {
-    @include flex(row,center);
+    @include flex(row, center);
     width: 100%;
     height: 100%;
   }
 
   &-input {
     width: 100%;
+    height: 100%;
+  }
+
+  &-receive {
+    box-shadow: none;
+    background: #f3f4f8;
+    border-radius: 60px;
+    border: none;
+
+    input {
+      font-size: 25px;
+      font-weight: bold;
+    }
   }
 }
 
@@ -56,32 +72,48 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  border-radius: 8px;
+  // border-radius: 8px;
   outline: none;
   border: none;
-  background-color: $lightgrey;
+  // background-color: $lightgrey;
   padding: 0px 5px 0px 20px;
-  font-size: 30px;
-  line-height: 62px;
+  font-size: 20px;
+  // line-height: 90px;
   font-weight: 600;
 }
 
 .input-medium::placeholder {
-  font-weight: 600;
+  font-weight: 500;
+  color: rgb(141, 141, 141);
 }
 
 .input-label {
-  @include flex(row,center,space-between);
+  @include flex(row, center, space-between);
   position: absolute;
-  padding: 4px 6px;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 0px;
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: uppercase;
-  color: $grey;
-  opacity: 0.6;
+  // padding: 4px 6px;
+  // width: 100%;
+  // box-sizing: border-box;
+  // border-radius: 0px;
+  // font-size: 13px;
+  // font-weight: 400;
+  // text-transform: uppercase;
+  // color: $grey;
+  // opacity: 0.6;
+
+  width: max-content;
+  top: 23px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 20px;
+  line-height: 1.4;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #ced4ec;
+  box-shadow: 0px 4px 10px rgba(143, 143, 177, 0.3);
+  cursor: pointer;
 
   &-inner {
     margin: 0px 10px 0px 5px;
@@ -111,4 +143,3 @@
 .error {
   background-color: $lightorange;
 }
-

@@ -5,47 +5,53 @@ $fs: 11px;
 $height: 90px;
 
 .header {
-  @include flex(row,center,center,nowrap);
+  @include flex(row, center, center, nowrap);
+
+  height: auto;
+  padding-top: 50px;
+  background-color: transparent;
+
   font-family: $font4;
   box-sizing: border-box;
-  position: fixed;
+  // position: fixed;
+  position: relative;
   left: 0;
   width: 100%;
-  height: $height;
-  background-color: $white;
+  // height: $height;
+  // background-color: $white;
   z-index: 999;
   user-select: none;
   color: $blue;
-  padding-top: 12px;
-  padding-bottom: 11px;
+  // padding-top: 12px;
+  // padding-bottom: 11px;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 3px;
   font-size: $fs;
   &-container {
-    @include flex(row,center,space-between,nowrap);
-    height: $height;
+    @include flex(row, center, center, nowrap);
+    // height: $height;
     width: 100%;
     max-width: 1270px;
   }
   &-left-group {
-    @include flex(row,center,center,nowrap);
-    height: $height;
+    @include flex(row, center, center, nowrap);
+    // height: $height;
     padding: 0px 2vw;
-    @include b('mobile') {
+    @include b("mobile") {
       padding: 0px 2vw;
     }
   }
   &-right-group {
-    @include flex(row,center,center,nowrap);
-    height: $height;
+    @include flex(row, center, center, nowrap);
+    // height: $height;
     padding: 0px 2vw;
-    @include b('mobile') {
-      display:none;
+    @include b("mobile") {
+      display: none;
     }
   }
   &-item {
-    @include flex(row,center,center);
+    @include flex(row, center, center);
     cursor: pointer;
     padding: 20px 25px;
     font-size: $fs;
@@ -57,7 +63,7 @@ $height: 90px;
     }
   }
   &-item:hover {
-    @include flex(row,center,center);
+    @include flex(row, center, center);
     cursor: pointer;
     padding: 20px 25px;
     font-size: $fs;
@@ -70,14 +76,14 @@ $height: 90px;
     opacity: 0.4;
   }
   &-logo {
-    width: 121px;
-    height: 62px;
+    width: 96px;
+    height: 35px;
   }
   &-menu-mobile-closed {
-    display:none;
+    display: none;
   }
   &-menu-mobile-open {
-    @include flex(column,center,flex-start);
+    @include flex(column, center, flex-start);
     box-sizing: border-box;
     position: fixed;
     height: 100vh;
@@ -94,7 +100,7 @@ $height: 90px;
   cursor: pointer;
   z-index: 1000;
   &-wrapper {
-    @include flex(column,center,center);
+    @include flex(column, center, center);
     padding: 0px 28px;
     height: 60px;
     cursor: pointer;
@@ -108,7 +114,7 @@ $height: 90px;
 
 .header-menu {
   &-footer {
-    @include flex(column,center,space-around);
+    @include flex(column, center, space-around);
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -121,7 +127,7 @@ $height: 90px;
     font-size: 15px;
     user-select: none;
     &-logo-group {
-      @include flex(row,center,center);
+      @include flex(row, center, center);
     }
     &-logo {
       cursor: pointer;
@@ -143,4 +149,3 @@ $height: 90px;
     }
   }
 }
-

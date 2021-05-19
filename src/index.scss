@@ -2,11 +2,11 @@
 @import "./scss/mixins.scss";
 
 @font-face {
-  font-family: 'Sofia Pro';
-  src: local('Sofia Pro Regular'), local('Sofia-Pro-Regular'),
-  url('./assets/fonts/SofiaPro/SofiaProRegular.woff2') format('woff2'),
-  url('./assets/fonts/SofiaPro/SofiaProRegular.woff') format('woff'),
-  url('./assets/fonts/SofiaPro/SofiaProRegular.ttf') format('truetype');
+  font-family: "Sofia Pro";
+  src: local("Sofia Pro Regular"), local("Sofia-Pro-Regular"),
+    url("./assets/fonts/SofiaPro/SofiaProRegular.woff2") format("woff2"),
+    url("./assets/fonts/SofiaPro/SofiaProRegular.woff") format("woff"),
+    url("./assets/fonts/SofiaPro/SofiaProRegular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -69,10 +69,19 @@ input::placeholder {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100%;
+  // height: 100%;
+  height: 800px;
   background-position: top, center;
   background-repeat: repeat;
-  filter: grayscale(1);
+  background: linear-gradient(
+      180deg,
+      #cae4f7 0%,
+      #d9e9f8 48.84%,
+      #ddf1fb 64.46%,
+      #d6f1fb 100%
+    ),
+    #c4c4c4;
+  // filter: grayscale(1);
   z-index: -1;
   box-sizing: border-box;
 }
@@ -85,8 +94,8 @@ input::placeholder {
 }
 
 .body {
-  @include flex(row,normal,center);
-  padding: 100px + 37px 30px 80px 30px;
+  @include flex(row, normal, center);
+  // padding: 100px + 37px 30px 80px 30px;
   user-select: none;
   box-sizing: border-box;
 }
@@ -118,7 +127,7 @@ input::placeholder {
 .links {
   line-height: 24px;
   &-item {
-    @include flex(row,center);
+    @include flex(row, center);
     margin-top: 40px;
     text-decoration: none;
     font-weight: bold;
@@ -148,7 +157,7 @@ input::placeholder {
 }
 
 .button {
-  @include flex(row,center);
+  @include flex(row, center);
   cursor: pointer;
   background: $blue;
   padding: 0px 28px 0px 20px;
@@ -157,17 +166,17 @@ input::placeholder {
   color: $white;
   font-weight: 700;
   white-space: nowrap;
-  border-radius: 8px;
+  border-radius: 60px;
   &-big {
-    @include flex(row,center);
+    @include flex(row, center);
     cursor: pointer;
     background: $blue;
     padding: 0px 48px 0px 40px;
     line-height: 62px;
-    font-size: 14px;
+    font-size: 25px;
     color: $white;
     font-weight: 700;
-    border-radius: 8px;
+    border-radius: 60px;
   }
   &-arrow {
     margin-right: 10px;
@@ -183,6 +192,10 @@ input::placeholder {
 
 .mt20 {
   margin-top: 20px;
+}
+
+.mt40 {
+  margin-top: 40px;
 }
 
 .m10 {
@@ -213,4 +226,3 @@ input::placeholder {
 .color-red {
   color: $red;
 }
-

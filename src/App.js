@@ -1,10 +1,9 @@
-import React from 'react';
+import React from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
 import Modal from "./components/Modal";
-import bg from "./assets/images/bg.svg";
 import config from "./config";
 import { useSelector } from "react-redux";
 
@@ -12,21 +11,24 @@ function App() {
   const { dex } = useSelector(({ wallet }) => wallet);
 
   const formatTokenLink = (network) => {
-    if (!dex) return '';
-    const token = dex.tokens.filter((item) => item.network===network)[0];
-    return network === 'Binance-Chain' ? 'https://explorer.binance.org/asset/WISH-2D5' :
-    config.tokenLinks()[
-    network === 'Ethereum' ?
-    'ethereum' : network === 'Binance-Smart-Chain' ?
-    'binanceSmartChain' : 'binanceChain'
-    ] + `/token/${token.token_address}`
-  }
+    if (!dex) return "";
+    const token = dex.tokens.filter((item) => item.network === network)[0];
+    return network === "Binance-Chain"
+      ? "https://explorer.binance.org/asset/WISH-2D5"
+      : config.tokenLinks()[
+          network === "Ethereum"
+            ? "ethereum"
+            : network === "Binance-Smart-Chain"
+            ? "binanceSmartChain"
+            : "binanceChain"
+        ] + `/token/${token.token_address}`;
+  };
 
   return (
     <div className="App">
-      <div className="App-background" style={{ backgroundImage: `url(${bg})` }}></div>
+      <div className="App-background"></div>
       <div className="App-container">
-        <Header/>
+        <Header />
 
         <div className="body">
           {/*<div className="info">*/}
@@ -89,13 +91,11 @@ function App() {
           {/*  </div>*/}
           {/*</div>*/}
 
-          <Form/>
-
+          <Form />
         </div>
 
-        <Footer/>
-        <Modal/>
-
+        <Footer />
+        <Modal />
       </div>
     </div>
   );
