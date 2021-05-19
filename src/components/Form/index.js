@@ -479,7 +479,7 @@ function Form() {
           href={getTokenLink(networkFrom, tokenAddressFrom)}
           target="_blank"
         >
-          <div className="link">Etherscan {getTokenSymbol(networkFrom)}</div>
+          <div className="link">{getTokenSymbol(networkFrom)}</div>
           <IconLink className="input-label-inner-image" />
         </a>
       </div>
@@ -539,7 +539,7 @@ function Form() {
           href={getTokenLink(networkTo, tokenAddressTo)}
           target="_blank"
         >
-          <div className="link">Etherscan {getTokenSymbol(networkTo)}</div>
+          <div className="link">{getTokenSymbol(networkTo)}</div>
           <IconLink className="input-label-inner-image" />
         </a>
       </div>

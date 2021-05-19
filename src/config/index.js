@@ -6,10 +6,10 @@ export default {
       : `https://swap.rubic.exchange/api/v1`;
   },
   links: {
-    twitter: "https://twitter.com/",
-    medium: "https://medium.com",
-    telegram: "https://tg.org/",
-    github: "https://github.com/",
+    twitter: "https://twitter.com/LessToken",
+    medium: "https://less-token.medium.com/",
+    telegram: "https://t.me/lesstokenann",
+    github: "https://github.com/lesstoken",
     reddit: "",
     discord: "",
     email: "",
