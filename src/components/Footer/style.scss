@@ -2,42 +2,48 @@
 @import "../../scss/mixins.scss";
 
 .footer {
-  @include flex(column,center,space-around);
+  @include flex(column, center, center);
   font-family: $font4;
   box-sizing: border-box;
   position: relative;
   //left: 0;
   //bottom: 0;
-  padding: 20px 10px 0px 10px;
+  padding: 30px 10px 30px 10px;
+  margin-top: 150px;
   width: 100%;
-  height: 80px;
+  // height: 80px;
   z-index: 997;
   font-size: 15px;
   //background: linear-gradient(0deg, $bg 0%, $bg 50%, transparent 100%);
   user-select: none;
 
-  &-logo-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
   &-logo {
-    cursor: pointer;
-    margin: 0px 10px;
-    path[fill="#2873FB"] {
-      fill: $blue;
-    }
-    path[fill="white"] {
-      fill: $lightgrey1;
+    @include flex(column, center, center);
+    width: 100%;
+    margin: 15px 0;
+  }
+
+  &-social {
+    @include flex(row, center, space-between);
+    width: 100%;
+    max-width: 320px;
+    margin: 15px 0;
+
+    &-link {
+      @include flex(column, center, center);
+      width: 60px;
+      height: 60px;
+      border-radius: 100px;
+      background-color: #ffffff;
+      box-shadow: 0px 12px 40px rgba(84, 84, 212, 0.1);
     }
   }
+
   &-copyright {
+    @include flex(column, center, center);
+    margin: 15px 0;
+    width: 100%;
     color: $grey2;
     font-weight: 400;
   }
 }
-
-
-

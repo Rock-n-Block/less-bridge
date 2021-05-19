@@ -1,33 +1,31 @@
-import React from 'react';
-import useMedia from 'use-media';
+import React from "react";
+import useMedia from "use-media";
 
-import config from '../../config';
-import './style.scss';
-import { ReactComponent as IconLogo } from '../../assets/images/logo.svg';
-import { ReactComponent as IconFacebook } from "../../assets/icons/social/facebook-circle.svg";
-import { ReactComponent as IconTelegram } from "../../assets/icons/social/telegram-circle.svg";
-import { ReactComponent as IconEmail } from "../../assets/icons/social/email-circle.svg";
-import { ReactComponent as IconBitcoin } from "../../assets/icons/social/bitcoin-circle.svg";
-import { ReactComponent as IconMedium } from "../../assets/icons/social/medium-circle.svg";
-import { ReactComponent as IconTwitter } from "../../assets/icons/social/twitter-circle.svg";
-import { ReactComponent as IconGithub } from "../../assets/icons/social/github-circle.svg";
-import { ReactComponent as IconDiscord } from "../../assets/icons/social/discord-circle.svg";
-import { ReactComponent as IconReddit } from "../../assets/icons/social/reddit-circle.svg";
+import config from "../../config";
+import "./style.scss";
+import { ReactComponent as IconLogo } from "../../assets/images/logo.svg";
+// import { ReactComponent as IconFacebook } from "../../assets/icons/social/facebook-circle.svg";
+// import { ReactComponent as IconTelegram } from "../../assets/icons/social/telegram-circle.svg";
+// import { ReactComponent as IconEmail } from "../../assets/icons/social/email-circle.svg";
+// import { ReactComponent as IconBitcoin } from "../../assets/icons/social/bitcoin-circle.svg";
+// import { ReactComponent as IconMedium } from "../../assets/icons/social/medium-circle.svg";
+// import { ReactComponent as IconTwitter } from "../../assets/icons/social/twitter-circle.svg";
+// import { ReactComponent as IconGithub } from "../../assets/icons/social/github-circle.svg";
+// import { ReactComponent as IconDiscord } from "../../assets/icons/social/discord-circle.svg";
+// import { ReactComponent as IconReddit } from "../../assets/icons/social/reddit-circle.svg";
 import HeaderDropdown from "../HeaderDropdown";
 
 function Header() {
-
-  const isMobile = useMedia({maxWidth: 1000});
+  const isMobile = useMedia({ maxWidth: 1000 });
 
   const [openMenu, setOpenMenu] = React.useState(false);
 
   return (
     <header className="header">
       <div className="header-container">
-
         <div className="header-left-group">
           <a href="/">
-            <IconLogo className="header-logo"/>
+            <IconLogo className="header-logo" />
           </a>
         </div>
 
@@ -113,7 +111,6 @@ function Header() {
         {/*  </div>*/}
         {/*  }*/}
         {/*</div>*/}
-
       </div>
     </header>
   );
