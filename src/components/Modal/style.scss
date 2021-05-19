@@ -2,7 +2,7 @@
 
 .modal {
   &-open {
-    @include flex(column,center,center);
+    @include flex(column, center, center);
     position: fixed;
     top: 0;
     left: 0;
@@ -18,9 +18,9 @@
   }
 
   &-container {
-    @include flex(column,center,center);
+    @include flex(column, center, center);
     position: relative;
-    min-width: 300px;
+    min-width: 250px;
     max-width: 600px;
     min-height: 150px;
     background-color: white;
@@ -39,7 +39,7 @@
   }
 
   &-header {
-    @include flex(row,center,space-between);
+    @include flex(row, center, space-between);
     font-weight: 700;
     font-size: 30px;
   }

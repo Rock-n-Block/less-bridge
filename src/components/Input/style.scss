@@ -38,6 +38,7 @@
     input {
       font-size: 25px;
       font-weight: bold;
+      background: transparent;
 
       @include b(500) {
         font-size: 18px;

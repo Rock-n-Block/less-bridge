@@ -1,15 +1,23 @@
 @import "./scss/theme.scss";
 @import "./scss/mixins.scss";
 
-@font-face {
-  font-family: "Sofia Pro";
-  src: local("Sofia Pro Regular"), local("Sofia-Pro-Regular"),
-    url("./assets/fonts/SofiaPro/SofiaProRegular.woff2") format("woff2"),
-    url("./assets/fonts/SofiaPro/SofiaProRegular.woff") format("woff"),
-    url("./assets/fonts/SofiaPro/SofiaProRegular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-Thin", 100);
+@include font-face(
+  "Poppins",
+  "../assets/fonts/Poppins/Poppins-ExtraLight",
+  200
+);
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-Light", 300);
+@include font-face(
+  "Poppins",
+  "../assets/fonts/Poppins/Poppins-Regular",
+  normal
+);
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-Medium", 500);
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-Bold", 600);
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-SemiBold", 700);
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-Black", 800);
+@include font-face("Poppins", "../assets/fonts/Poppins/Poppins-ExtraBold", 900);
 
 *::-webkit-scrollbar {
   width: 5px;
