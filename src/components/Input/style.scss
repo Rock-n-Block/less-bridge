@@ -13,6 +13,11 @@
   margin: 5px 0 0 0;
   overflow: hidden;
   border-radius: 36px;
+
+  @include b(500) {
+    min-height: 70px;
+  }
+
   &-inner {
     @include flex(row, center);
     width: 100%;
@@ -33,6 +38,10 @@
     input {
       font-size: 25px;
       font-weight: bold;
+
+      @include b(500) {
+        font-size: 18px;
+      }
     }
   }
 }
@@ -80,6 +89,10 @@
   font-size: 20px;
   // line-height: 90px;
   font-weight: 600;
+
+  @include b(500) {
+    font-size: 18px;
+  }
 }
 
 .input-medium::placeholder {

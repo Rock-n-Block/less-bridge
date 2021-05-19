@@ -18,6 +18,12 @@
   // border-radius: 8px;
   border-radius: 60px;
   font-size: 20px;
+
+  @include b(500) {
+    line-height: 70px;
+    font-size: 15px;
+  }
+
   &-list {
     @include flex(column);
     visibility: hidden;
@@ -53,6 +59,10 @@
     transition: visibility 0.1s, opacity 0.1s ease-in;
     overflow: auto;
     font-weight: 500;
+
+    @include b(500) {
+      top: 60px;
+    }
   }
 
   &-item {
@@ -63,10 +73,22 @@
     cursor: pointer;
     -webkit-transition: background-color 0.25s ease-out;
     transition: background-color 0.25s ease-out;
+
+    @include b(500) {
+      line-height: 70px;
+      padding: 0 15px;
+    }
+
     &-image {
       width: 48px;
       height: 48px;
       margin-right: 20px;
+
+      @include b(500) {
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+      }
     }
   }
 
@@ -83,6 +105,11 @@
   &-label {
     @include flex(row, center, space-between);
     padding: 0px 40px 0 20px;
+
+    @include b(500) {
+      padding: 0 15px;
+    }
+
     &-left {
       pointer-events: none;
       display: flex;

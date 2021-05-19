@@ -17,6 +17,10 @@
   //background: linear-gradient(0deg, $bg 0%, $bg 50%, transparent 100%);
   user-select: none;
 
+  @include b(500) {
+    margin-top: 50px;
+  }
+
   &-logo {
     @include flex(column, center, center);
     width: 100%;
