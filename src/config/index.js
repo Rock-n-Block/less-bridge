@@ -2,8 +2,8 @@ export default {
   IS_PRODUCTION: true,
   serverDomain() {
     return this.IS_PRODUCTION
-      ? `https://swap.rubic.exchange/api/v1`
-      : `https://swap.rubic.exchange/api/v1`;
+      ? `https://bridge.less.xyz/api/v1`
+      : `https://bridge.less.xyz/api/v1`;
   },
   links: {
     twitter: "https://twitter.com/LessToken",
