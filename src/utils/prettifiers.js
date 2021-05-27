@@ -51,6 +51,6 @@ export const getTokenSymbol = (network) => {
   return network === "Binance-Chain"
     ? "LESS"
     : network === "Binance-Smart-Chain"
-    ? "LESS"
+    ? "BSC LESS"
     : "LESS";
 };
