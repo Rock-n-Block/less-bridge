@@ -2,7 +2,7 @@
 @import "../../scss/mixins.scss";
 
 .input-container {
-  @include flex(column);
+  @include flex(column,normal,center);
   width: 100%;
   min-height: 90px;
   box-sizing: border-box;

@@ -106,7 +106,7 @@ input::placeholder {
 }
 
 .body {
-  @include flex(row, normal, center);
+  @include flex(column, center, center);
   // padding: 100px + 37px 30px 80px 30px;
   user-select: none;
   box-sizing: border-box;

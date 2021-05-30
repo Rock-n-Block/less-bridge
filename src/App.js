@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Form from "./components/Form";
+import IntegratedChains from "./components/IntegratedChains";
 import Modal from "./components/Modal";
 import config from "./config";
 import { useSelector } from "react-redux";
@@ -92,6 +93,7 @@ function App() {
           {/*</div>*/}
 
           <Form />
+          <IntegratedChains/>
         </div>
 
         <Footer />
