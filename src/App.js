@@ -93,7 +93,7 @@ function App() {
           {/*</div>*/}
 
           <Form />
-          {/*<IntegratedChains/>*/}
+          <IntegratedChains/>
         </div>
 
         <Footer />
