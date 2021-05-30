@@ -14,7 +14,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-logo">
-        <a href="/">
+        <a href="https://less.xyz/" target="_blank" rel="noopener noreferer">
           <LogoFooter />
         </a>
       </div>

@@ -24,7 +24,7 @@ function Header() {
     <header className="header">
       <div className="header-container">
         <div className="header-left-group">
-          <a href="/">
+          <a href="https://less.xyz/" target="_blank" rel="noopener noreferer">
             <IconLogo className="header-logo" />
           </a>
         </div>
