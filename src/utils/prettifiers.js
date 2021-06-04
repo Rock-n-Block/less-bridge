@@ -36,21 +36,24 @@ export const getTokenLink = (network, tokenAddress) => {
   const isNetworkBinanceChain = network === "Binance-Chain";
   const isNetworkBinanceSmartChain = network === "Binance-Smart-Chain";
   const isNetworkEthereum = network === "Ethereum";
+  if (network === 'Matic') {
+    return `${config.tokenLinks().matic}${tokenAddress}/contracts`
+  }
   return isNetworkBinanceChain
     ? "https://explorer.binance.org/asset/WISH-2D5"
     : config.tokenLinks()[
-        isNetworkEthereum
-          ? "ethereum"
-          : isNetworkBinanceChain
-          ? "binanceChain"
-          : "binanceSmartChain"
-      ] + `/token/${tokenAddress}`;
+    isNetworkEthereum
+      ? "ethereum"
+      : isNetworkBinanceChain
+        ? "binanceChain"
+        : "binanceSmartChain"
+    ] + `/token/${tokenAddress}`;
 };
 
 export const getTokenSymbol = (network) => {
   return network === "Binance-Chain"
     ? "LESS"
     : network === "Binance-Smart-Chain"
-    ? "BSC LESS"
-    : "LESS";
+      ? "BSC LESS"
+      : "LESS";
 };

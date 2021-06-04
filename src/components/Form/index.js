@@ -37,6 +37,12 @@ const networksMetamask = [
     text: "Binance-Smart-Chain",
     image: require("../../assets/icons/crypto/bnb-circle.svg").default,
   },
+  {
+    id: 3,
+    key: "Matic",
+    text: "Polygon",
+    image: require("../../assets/icons/crypto/polygon.svg").default,
+  },
 ];
 
 const networksMetamaskFrom = [
@@ -52,6 +58,12 @@ const networksMetamaskFrom = [
     text: "Binance-Smart-Chain",
     image: require("../../assets/icons/crypto/bnb-circle.svg").default,
   },
+  {
+    id: 3,
+    key: "Matic",
+    text: "Polygon",
+    image: require("../../assets/icons/crypto/polygon.svg").default,
+  },
 ];
 
 const networksMetamaskTo = [
@@ -65,6 +77,12 @@ const networksMetamaskTo = [
     id: 1,
     key: "Binance-Smart-Chain",
     text: "Binance-Smart-Chain",
+    image: require("../../assets/icons/crypto/bnb-circle.svg").default,
+  },
+  {
+    id: 3,
+    key: "Matic",
+    text: "Matic",
     image: require("../../assets/icons/crypto/bnb-circle.svg").default,
   },
 ];
@@ -342,6 +360,7 @@ function Form() {
       setWaiting(true);
       const blockchain =
         networks && networks.filter((item) => item.key === networkTo)[0].id;
+      debugger
       await contractService.transferToOtherBlockchain({
         userAddress,
         blockchain,
@@ -425,6 +444,17 @@ function Form() {
               </div>
             </>
           )}
+          {
+            networkFrom === 'Matic' ? <div
+              className="button m10"
+              onClick={() => {
+                dispatch(walletActions.setWalletType("matic"));
+                toggleModal({ isOpen: false });
+              }}
+            >
+              Metamask
+              </div> : ''
+          }
         </div>
       ),
     });
@@ -580,7 +610,7 @@ function Form() {
         ) : (
           <div
             className={`button-big ${approving ? "button-disabled" : ""} mt40`}
-            onClick={!approving ? approve : () => {}}
+            onClick={!approving ? approve : () => { }}
           >
             {approving || waiting ? "Waiting..." : "Approve"}
           </div>

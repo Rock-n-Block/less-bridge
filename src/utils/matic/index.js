@@ -13,12 +13,12 @@ export default class MetamaskService {
     this.providers = {};
     this.Web3Provider = new Web3(this.wallet);
     this.wallet && this.wallet.on('chainChanged', (newChain) => {
-      localStorage.setItem('walletTypeOnReload', 'metamask')
+      localStorage.setItem('walletTypeOnReload', 'matic')
       window.location.reload()
     });
     this.wallet && this.wallet.on('accountsChanged', (newAccounts) => {
       console.log('accountsChanged', newAccounts)
-      localStorage.setItem('walletTypeOnReload', 'metamask')
+      localStorage.setItem('walletTypeOnReload', 'matic')
       const accounts = JSON.parse(localStorage.getItem('accounts'))
       if (!accounts || !isEqual(accounts.accounts, newAccounts)) {
         localStorage.setItem('accounts', JSON.stringify({ accounts: newAccounts }))
@@ -27,7 +27,7 @@ export default class MetamaskService {
     });
     this.wallet && this.wallet.on('disconnect', () => {
       console.log('Binance wallet disconnected')
-      localStorage.setItem('walletTypeOnReload', 'metamask')
+      localStorage.setItem('walletTypeOnReload', 'matic')
       window.location.reload()
     });
     this.wallet && this.wallet.on('message', (message) => {
@@ -44,10 +44,10 @@ export default class MetamaskService {
 
   async getAccount() {
     if (!this.wallet) return { errorMsg: `${this.name} wallet is not injected` }
-    return new Promise((resolve, reject) => {
-      const usedNet = config.chainIds[this.net][this.networkFrom].id
-      const netVersion = this.wallet.chainId
-      const neededNetName = config.chainIds[this.net][this.networkFrom].name
+    return new Promise(async (resolve, reject) => {
+      const usedNet = config.chainIds[this.net].Matic.id
+      const netVersion = await this.wallet.request({ method: 'eth_chainId' })
+      const neededNetName = config.chainIds[this.net].Matic.name
       console.log('getAccount netVersion', netVersion)
       const messagePleaseChooseNet = () => reject({
         errorMsg: `Please choose ${neededNetName} network in your metamask wallet`
@@ -86,6 +86,7 @@ export default class MetamaskService {
   }
 
   transferToOtherBlockchain = ({ userAddress, blockchain, amount, receiver, callback }) => {
+    debugger
     const approveMethod = this.getMethodInterface('transferToOtherBlockchain', this.contractAbiSwap);
     const approveSignature = this.encodeFunctionCall(approveMethod, [
       `0x${blockchain}`,

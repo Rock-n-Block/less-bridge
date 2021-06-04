@@ -1,9 +1,9 @@
 export default {
-  IS_PRODUCTION: true,
+  IS_PRODUCTION: false,
   serverDomain() {
     return this.IS_PRODUCTION
       ? `https://bridge.less.xyz/api/v1`
-      : `https://bridge.less.xyz/api/v1`;
+      : `https://devswaps.rubic.exchange/api/v1`;
   },
   links: {
     twitter: "https://twitter.com/LessToken",
@@ -17,6 +17,7 @@ export default {
   },
   tokenLinks() {
     return {
+      matic: this.IS_PRODUCTION ? '' : 'https://explorer-mumbai.maticvigil.com/address/',
       ethereum: this.IS_PRODUCTION
         ? "https://etherscan.io"
         : "https://kovan.etherscan.io",
@@ -48,6 +49,10 @@ export default {
         name: "Binance smart chain testnet",
         id: [97, "0x61"],
       },
+      Matic: {
+        name: 'Mumbai Testnet',
+        id: ['0x13881']
+      }
     },
   },
 };
