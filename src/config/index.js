@@ -1,5 +1,5 @@
 export default {
-  IS_PRODUCTION: false,
+  IS_PRODUCTION: true,
   serverDomain() {
     return this.IS_PRODUCTION
       ? `https://bridge.less.xyz/api/v1`
@@ -17,7 +17,7 @@ export default {
   },
   tokenLinks() {
     return {
-      matic: this.IS_PRODUCTION ? '' : 'https://explorer-mumbai.maticvigil.com/address/',
+      matic: this.IS_PRODUCTION ? 'https://explorer-mainnet.maticvigil.com/address/' : 'https://explorer-mumbai.maticvigil.com/address/',
       ethereum: this.IS_PRODUCTION
         ? "https://etherscan.io"
         : "https://kovan.etherscan.io",
@@ -39,6 +39,10 @@ export default {
         name: "Binance smart chain",
         id: [56, "0x38"],
       },
+      Matic: {
+        name: 'Mumbai Testnet',
+        id: ['0x89']
+      }
     },
     testnet: {
       Ethereum: {

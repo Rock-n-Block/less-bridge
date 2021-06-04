@@ -37,6 +37,9 @@ export const getTokenLink = (network, tokenAddress) => {
   const isNetworkBinanceSmartChain = network === "Binance-Smart-Chain";
   const isNetworkEthereum = network === "Ethereum";
   if (network === 'Matic') {
+    if (config.IS_PRODUCTION) {
+      return `${config.tokenLinks().matic}${tokenAddress}/read-contract`
+    }
     return `${config.tokenLinks().matic}${tokenAddress}/contracts`
   }
   return isNetworkBinanceChain

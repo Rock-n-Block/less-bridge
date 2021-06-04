@@ -125,7 +125,7 @@ function Form() {
 
   const getMinimumAmount = () => {
     try {
-      const minimumAmount = dex.min_swap_amount;
+      const minimumAmount = dex.min_swap_amount + fee;
       setMinimumAmount(minimumAmount);
       return minimumAmount;
     } catch (e) {
@@ -141,6 +141,7 @@ function Form() {
         dex && dex.tokens.filter((item) => item.network === networkName)[0];
       const fee = dex ? token && token.fee : 0;
       setFee(fee);
+      setMinimumAmount(dex.min_swap_amount + fee)
       return fee;
     } catch (e) {
       console.error(e);
@@ -168,7 +169,7 @@ function Form() {
     try {
       showFormError({ amount: null });
       let newValue = value;
-      if (newValue < 0) newValue = "0";
+      if (+newValue < 0) newValue = "0";
       if (
         newValue.length > 1 &&
         Number(newValue) >= 1 &&
@@ -179,7 +180,7 @@ function Form() {
       // get swap address
       if (!dex) newValue = "0";
       const network = networks.filter((item) => item.key === networkFrom)[0];
-      const networkName = network && network.text;
+      const networkName = network && network.key;
       const token =
         dex && dex.tokens.filter((item) => item.network === networkName)[0];
       // console.log(networks,networkFrom,networkName,wallet,dex)
@@ -208,7 +209,9 @@ function Form() {
 
   const handleFocusAmount = (e) => {
     let newValue = e.target.value;
-    if (newValue === "0") setAmount("");
+    if (newValue === "0") {
+      setAmount("");
+    }
   };
 
   const handleChangeNetworkFrom = (e) => {
@@ -360,7 +363,6 @@ function Form() {
       setWaiting(true);
       const blockchain =
         networks && networks.filter((item) => item.key === networkTo)[0].id;
-      debugger
       await contractService.transferToOtherBlockchain({
         userAddress,
         blockchain,
@@ -470,8 +472,8 @@ function Form() {
     if (!networkTo) return;
     amount && handleChangeAmount(amount);
     if (!dex) return;
-    getFee();
     getMinimumAmount();
+    getFee();
     getAddresses();
   }, [networkTo, dex]);
 

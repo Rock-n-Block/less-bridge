@@ -86,7 +86,6 @@ export default class MetamaskService {
   }
 
   transferToOtherBlockchain = ({ userAddress, blockchain, amount, receiver, callback }) => {
-    debugger
     const approveMethod = this.getMethodInterface('transferToOtherBlockchain', this.contractAbiSwap);
     const approveSignature = this.encodeFunctionCall(approveMethod, [
       `0x${blockchain}`,
