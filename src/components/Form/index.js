@@ -43,6 +43,12 @@ const networksMetamask = [
     text: 'Polygon',
     image: require('../../assets/icons/crypto/polygon.svg').default,
   },
+  {
+    id: 4,
+    key: 'Tron',
+    text: 'Tron',
+    image: require('../../assets/icons/crypto/tron.svg').default,
+  },
 ];
 
 const networksMetamaskFrom = [
@@ -64,6 +70,12 @@ const networksMetamaskFrom = [
     text: 'Polygon',
     image: require('../../assets/icons/crypto/polygon.svg').default,
   },
+  {
+    id: 4,
+    key: 'Tron',
+    text: 'Tron',
+    image: require('../../assets/icons/crypto/tron.svg').default,
+  },
 ];
 
 const networksMetamaskTo = [
@@ -84,6 +96,12 @@ const networksMetamaskTo = [
     key: 'Matic',
     text: 'Matic',
     image: require('../../assets/icons/crypto/bnb-circle.svg').default,
+  },
+  {
+    id: 4,
+    key: 'Tron',
+    text: 'Tron',
+    image: require('../../assets/icons/crypto/tron.svg').default,
   },
 ];
 
@@ -328,7 +346,7 @@ function Form() {
       setApproving(true);
       await contractService.approveToken(userAddress, async (res) => {
         console.log('approveToken', res);
-        if (res.status === 'ERROR') return setApproving(false);
+        if (res && res.status === 'ERROR') return setApproving(false);
         const intervalCheckAllowance = setInterval(async () => {
           await checkAllowance(intervalCheckAllowance);
         }, 500);
@@ -449,6 +467,18 @@ function Form() {
                 toggleModal({ isOpen: false });
               }}>
               Metamask
+            </div>
+          ) : (
+            ''
+          )}
+          {networkFrom === 'Tron' ? (
+            <div
+              className="button m10"
+              onClick={() => {
+                dispatch(walletActions.setWalletType('tron'));
+                toggleModal({ isOpen: false });
+              }}>
+              TronLink
             </div>
           ) : (
             ''

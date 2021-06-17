@@ -7,6 +7,7 @@ import {
   MetamaskService,
   BackendService,
   MaticService,
+  TronService,
 } from '../../utils';
 import { userActions, modalActions, walletActions } from '../../redux/actions';
 
@@ -31,6 +32,48 @@ const ContractProvider = ({ children }) => {
     networkFrom: wallet.networkFrom,
     networkTo: wallet.networkTo,
   }));
+  const loginTron = async () => {
+    try {
+      console.log('loginTron', networkFrom, contractDetails);
+      const wallet = new TronService({
+        networkFrom,
+        contractDetails,
+      });
+      setContractService(
+        new ContractService({
+          wallet,
+          networkFrom,
+          contractDetails,
+        }),
+      );
+      setWalletService(wallet);
+      const account = await wallet.getAccount();
+      setUserData({
+        address: account.base58,
+        hex: account.hex,
+      });
+    } catch (e) {
+      console.error(e);
+      if (!e.errorMsg || e.errorMsg === '') {
+        toggleModal({
+          isOpen: true,
+          text: (
+            <div>
+              <p>Metamask extension is not found.</p>
+              <p>
+                You can install it from{' '}
+                <a href="https://metamask.io" target="_blank">
+                  metamask.io
+                </a>
+              </p>
+            </div>
+          ),
+        });
+      } else {
+        toggleModal({ isOpen: true, text: e.errorMsg });
+      }
+    }
+  };
   const loginMatic = async () => {
     try {
       console.log('loginMetamask', networkFrom, contractDetails);
@@ -180,22 +223,26 @@ const ContractProvider = ({ children }) => {
         (item) => item.network === 'Ethereum',
       )[0];
       const maticChain = tokens.filter((item) => item.network === 'Matic')[0];
+      const tronChain = tokens.filter((item) => item.network === 'Tron')[0];
       let contractDetails = {
         ADDRESS: {
           TOKEN: {
             Ethereum: ethereumChain.token_address,
             'Binance-Smart-Chain': binanceSmartChain.token_address,
             Matic: maticChain.token_address,
+            Tron: tronChain.token_address,
           },
           SWAP: {
             Ethereum: ethereumChain.swap_address,
             'Binance-Smart-Chain': binanceSmartChain.swap_address,
             Matic: maticChain.swap_address,
+            Tron: tronChain.swap_address,
           },
           FEE: {
             Ethereum: ethereumChain.fee_address,
             'Binance-Smart-Chain': binanceSmartChain.fee_address,
             Matic: maticChain.fee_address,
+            Tron: tronChain.fee_address,
           },
         },
         DECIMALS: {
@@ -203,11 +250,13 @@ const ContractProvider = ({ children }) => {
             Ethereum: ethereumChain.decimals,
             'Binance-Smart-Chain': binanceSmartChain.decimals,
             Matic: maticChain.decimals,
+            Tron: tronChain.decimals,
           },
           SWAP: {
             Ethereum: ethereumChain.decimals,
             'Binance-Smart-Chain': binanceSmartChain.decimals,
             Matic: maticChain.decimals,
+            Tron: tronChain.decimals,
           },
         },
         ABI: {
@@ -215,11 +264,13 @@ const ContractProvider = ({ children }) => {
             Ethereum: ethereumChain.token_abi,
             'Binance-Smart-Chain': binanceSmartChain.token_abi,
             Matic: maticChain.token_abi,
+            Tron: tronChain.token_abi,
           },
           SWAP: {
             Ethereum: ethereumChain.swap_abi,
             'Binance-Smart-Chain': binanceSmartChain.swap_abi,
             Matic: maticChain.swap_abi,
+            Tron: tronChain.swap_abi,
           },
         },
       };
@@ -247,6 +298,8 @@ const ContractProvider = ({ children }) => {
         loginBinance();
       } else if (walletType === 'matic' || walletTypeOnReload === 'matic') {
         loginMatic();
+      } else if (walletType === 'tron' || walletTypeOnReload === 'tron') {
+        loginTron();
       }
       localStorage.setItem('walletTypeOnReload', '');
     })();

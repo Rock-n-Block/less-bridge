@@ -20,6 +20,7 @@ export default {
       matic: this.IS_PRODUCTION
         ? 'https://explorer-mainnet.maticvigil.com/address/'
         : 'https://explorer-mumbai.maticvigil.com/address/',
+      tron: this.IS_PRODUCTION ? 'tronscanProd' : 'tronscanTest',
       ethereum: this.IS_PRODUCTION
         ? 'https://etherscan.io'
         : 'https://kovan.etherscan.io',
@@ -58,6 +59,10 @@ export default {
       Matic: {
         name: 'Mumbai Testnet',
         id: ['0x13881'],
+      },
+      Tron: {
+        name: 'TronLink',
+        id: ['https://event.nileex.io'],
       },
     },
   },
