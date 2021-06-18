@@ -197,7 +197,7 @@ const ContractProvider = ({ children }) => {
 
   const getDex = async () => {
     try {
-      const resultGetDex = await backendService.getDex({ name: 'dds' });
+      const resultGetDex = await backendService.getDex();
       const dex = resultGetDex.data;
       setWalletDex(dex);
       console.log('resultGetDex', resultGetDex.data);

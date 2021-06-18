@@ -2,7 +2,6 @@ import axios from 'axios';
 import config from '../../config';
 
 export default class BackendService {
-
   constructor() {
     axios.defaults.baseURL = config.serverDomain();
     axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -10,26 +9,25 @@ export default class BackendService {
 
   getDexList = async () => {
     try {
-      return axios.get('/dex/')
+      return axios.get('/dex/');
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
-  getDex = async ({name}) => {
+  getDex = async () => {
     try {
-      return axios.get(`/dex/${name}/`)
+      return axios.get(`/networks/`);
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
-  getGas = async ({network}) => {
+  getGas = async ({ network }) => {
     try {
-      return axios.get(`/gas/${network}/`)
+      return axios.get(`/gas/${network}/`);
     } catch (e) {
       console.error(e);
     }
-  }
-
+  };
 }

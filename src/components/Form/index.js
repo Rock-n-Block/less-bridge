@@ -143,7 +143,9 @@ function Form() {
 
   const getMinimumAmount = () => {
     try {
-      const minimumAmount = dex.min_swap_amount;
+      const minimumAmount = dex.filter(
+        (token) => token.network === networkFrom,
+      )[0].min_amount;
       setMinimumAmount(minimumAmount);
       return minimumAmount;
     } catch (e) {

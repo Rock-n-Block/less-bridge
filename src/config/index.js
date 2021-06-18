@@ -3,7 +3,7 @@ export default {
   serverDomain() {
     return this.IS_PRODUCTION
       ? `https://bridge.less.xyz/api/v1`
-      : `https://devswaps.rubic.exchange/api/v1`;
+      : `https://devless.mywish.io/api/v1`;
   },
   links: {
     twitter: 'https://twitter.com/LessToken',

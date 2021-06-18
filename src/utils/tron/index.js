@@ -68,7 +68,7 @@ export default class MetamaskService {
           },
           {
             type: 'string',
-            value: receiver,
+            value: this.wallet.address.toHex(receiver),
           },
         ],
         walletAddr: userAddress,
