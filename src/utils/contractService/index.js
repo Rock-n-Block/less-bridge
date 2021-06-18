@@ -29,7 +29,9 @@ export default class ContractService {
       const balance = await this.contractToken.methods
         .balanceOf(address)
         .call();
-      return +new BigNumber(balance._hex ? parseInt(balance._hex) : balance)
+      return +new BigNumber(
+        balance.balance ? parseInt(balance.balance._hex) : balance,
+      )
         .dividedBy(new BigNumber(10).pow(this.decimals))
         .toFixed();
     } catch (error) {

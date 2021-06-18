@@ -1,5 +1,5 @@
 export default {
-  IS_PRODUCTION: false,
+  IS_PRODUCTION: true,
   serverDomain() {
     return this.IS_PRODUCTION
       ? `https://bridge.less.xyz/api/v1`
@@ -45,6 +45,10 @@ export default {
       Matic: {
         name: 'Mumbai Mainnet',
         id: ['0x89'],
+      },
+      Tron: {
+        name: 'TronLink',
+        id: ['https://api.tronstack.io'],
       },
     },
     testnet: {

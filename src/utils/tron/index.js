@@ -4,10 +4,12 @@ import config from '../../config';
 
 export default class MetamaskService {
   constructor({ networkFrom, contractDetails }) {
-    this.name = 'tron';
+    this.name = 'tronlink';
     this.wallet = window.tronWeb;
     this.networkFrom = networkFrom;
-    this.net = config.IS_PRODUCTION ? 'mainnet' : 'https://event.nileex.io';
+    this.net = config.IS_PRODUCTION
+      ? 'https://api.tronstack.io'
+      : 'https://event.nileex.io';
     this.Web3Provider = new Web3(this.wallet);
 
     window.addEventListener('message', function (e) {
@@ -34,7 +36,7 @@ export default class MetamaskService {
     return new Promise((resolve, reject) => {
       if (!config.IS_PRODUCTION && this.wallet.eventServer.host !== this.net) {
         reject({
-          errorMsg: 'Please choose nile testnet in TronLink wallet',
+          errorMsg: 'Please choose mainnet in TronLink wallet',
         });
       }
       resolve(this.wallet.defaultAddress);
@@ -68,7 +70,7 @@ export default class MetamaskService {
           },
           {
             type: 'string',
-            value: this.wallet.address.toHex(receiver),
+            value: '0x' + this.wallet.address.toHex(receiver).substring(2),
           },
         ],
         walletAddr: userAddress,

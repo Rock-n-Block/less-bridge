@@ -121,7 +121,6 @@ const ContractProvider = ({ children }) => {
         networkFrom,
         contractDetails,
       });
-      await window.ethereum.enable();
       setContractService(
         new ContractService({
           wallet,
