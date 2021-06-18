@@ -138,7 +138,7 @@ export default class MetamaskService {
       console.log(broadcast);
       callback({ status: broadcast.result ? 'SUCCESS' : 'ERROR' });
     } catch (err) {
-      console.log(err, 'sendTx');
+      callback({ status: 'ERROR' });
       throw Error;
     }
   }

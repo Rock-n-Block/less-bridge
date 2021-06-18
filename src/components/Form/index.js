@@ -402,6 +402,7 @@ function Form() {
   const handleSwap = async () => {
     try {
       if (isNetworkToBinanceChain) return swap();
+      if (networkTo === 'Tron') return swap();
       const isGasOk = await checkGas(swap);
       if (isGasOk) swap();
     } catch (e) {
