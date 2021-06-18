@@ -158,7 +158,7 @@ function Form() {
       const network = networks.filter((item) => item.key === networkTo)[0];
       const networkName = network && network.key;
       const token =
-        dex && dex.tokens.filter((item) => item.network === networkName)[0];
+        dex && dex.filter((item) => item.network === networkName)[0];
       const fee = dex ? token && token.fee : 0;
       setFee(fee);
       return fee;
@@ -171,10 +171,8 @@ function Form() {
   const getAddresses = () => {
     try {
       if (!dex) return;
-      const dexFrom = dex.tokens.filter(
-        (item) => item.network === networkFrom,
-      )[0];
-      const dexTo = dex.tokens.filter((item) => item.network === networkTo)[0];
+      const dexFrom = dex.filter((item) => item.network === networkFrom)[0];
+      const dexTo = dex.filter((item) => item.network === networkTo)[0];
       // console.log('getAddresses',dexFrom,dexTo)
       setTokenAddressFrom(dexFrom.token_address);
       setTokenAddressTo(dexTo.token_address);
@@ -201,7 +199,7 @@ function Form() {
       const network = networks.filter((item) => item.key === networkFrom)[0];
       const networkName = network && network.key;
       const token =
-        dex && dex.tokens.filter((item) => item.network === networkName)[0];
+        dex && dex.filter((item) => item.network === networkName)[0];
       // console.log(networks,networkFrom,networkName,wallet,dex)
       if (!token) return setReceive('0');
       const fee = getFee();

@@ -201,7 +201,6 @@ const ContractProvider = ({ children }) => {
       const dex = resultGetDex.data;
       setWalletDex(dex);
       console.log('resultGetDex', resultGetDex.data);
-      const tokens = dex.tokens;
       if (!dex)
         return dispatch(
           modalActions.toggleModal({
@@ -209,21 +208,21 @@ const ContractProvider = ({ children }) => {
             text: 'Server is offline',
           }),
         );
-      if (tokens && !tokens[0])
+      if (dex && !dex[0])
         return dispatch(
           modalActions.toggleModal({
             isOpen: true,
             text: 'Server is offline',
           }),
         );
-      const binanceSmartChain = tokens.filter(
+      const binanceSmartChain = dex.filter(
         (item) => item.network === 'Binance-Smart-Chain',
       )[0];
-      const ethereumChain = tokens.filter(
+      const ethereumChain = dex.filter(
         (item) => item.network === 'Ethereum',
       )[0];
-      const maticChain = tokens.filter((item) => item.network === 'Matic')[0];
-      const tronChain = tokens.filter((item) => item.network === 'Tron')[0];
+      const maticChain = dex.filter((item) => item.network === 'Matic')[0];
+      const tronChain = dex.filter((item) => item.network === 'Tron')[0];
       let contractDetails = {
         ADDRESS: {
           TOKEN: {
