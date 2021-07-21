@@ -549,7 +549,7 @@ function Form() {
         error={form.amount}
         type="text"
         placeholder="Enter Amount"
-        value={amount}
+        value={amount === '0' ? '' : amount}
         onChange={handleChangeAmount}
         onFocus={handleFocusAmount}
         label={

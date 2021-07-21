@@ -18,41 +18,40 @@ function Footer() {
           <LogoFooter />
         </a>
       </div>
-      <div className="footer-social">
-        <a
-          className="footer-social-link"
-          target="_blank"
-          href={config.links.twitter}
-          rel="noreferrer"
-        >
-          <Twitter />
-        </a>
-        <a
-          className="footer-social-link"
-          target="_blank"
-          href={config.links.medium}
-          rel="noreferrer"
-        >
-          <Medium />
-        </a>
-        <a
-          className="footer-social-link"
-          target="_blank"
-          href={config.links.telegram}
-          rel="noreferrer"
-        >
-          <Telegram />
-        </a>
-        <a
-          className="footer-social-link"
-          target="_blank"
-          href={config.links.github}
-          rel="noreferrer"
-        >
-          <Github />
-        </a>
+      <div className="footer-divider"></div>
+      <div className="footer-links">
+        <div className="footer-copyright">2021 © Lesspad a product of Less Token  —  less.xyz</div>
+        <div className="footer-social">
+          <a
+            target="_blank"
+            href={config.links.twitter}
+            rel="noreferrer"
+          >
+            <Twitter />
+          </a>
+          <a
+            target="_blank"
+            href={config.links.medium}
+            rel="noreferrer"
+          >
+            <Medium />
+          </a>
+          <a
+            target="_blank"
+            href={config.links.telegram}
+            rel="noreferrer"
+          >
+            <Telegram />
+          </a>
+          <a
+            target="_blank"
+            href={config.links.github}
+            rel="noreferrer"
+          >
+            <Github />
+          </a>
+        </div>
       </div>
-      <div className="footer-copyright">©2021 less. All rights reserved</div>
     </footer>
   );
 }

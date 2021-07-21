@@ -7,17 +7,16 @@
   box-sizing: border-box;
   position: relative;
   // background-color: $lightgrey;
-  background-color: #f3f4f8;
+  background-color: $black;
   padding: 0px 0px;
-  margin: 5px 0 0 0;
+  margin: 8px 0 0 0;
   // line-height: 62px;
   line-height: 90px;
   cursor: pointer;
-  font-weight: 500;
   user-select: none;
-  // border-radius: 8px;
-  border-radius: 60px;
+  border-radius: 2px;
   font-size: 20px;
+  color: $purple;
 
   @include b(500) {
     line-height: 70px;
@@ -33,13 +32,11 @@
     width: 100%;
     box-sizing: border-box;
     // background-color: $lightgrey;
-    background-color: #f3f4f8;
-    box-shadow: $shadow-dropdown;
+    background-color: $black;
     z-index: 2;
     opacity: 0;
     transition: visibility 0.1s, opacity 0.1s ease-in;
     font-weight: 500;
-    border-radius: 60px;
   }
 
   &-list-open {
@@ -51,9 +48,7 @@
     max-height: 50vh;
     box-sizing: border-box;
     // background-color: $lightgrey;
-    background-color: #f3f4f8;
-    box-shadow: $shadow-dropdown;
-    border-radius: 60px;
+    background-color: $black;
     z-index: 2;
     opacity: 1;
     transition: visibility 0.1s, opacity 0.1s ease-in;
@@ -69,7 +64,6 @@
     @include flex(row, center);
     padding: 0px 40px 0 20px;
     line-height: 90px;
-    border-radius: 60px;
     cursor: pointer;
     -webkit-transition: background-color 0.25s ease-out;
     transition: background-color 0.25s ease-out;
@@ -159,7 +153,7 @@
       border-radius: 0px;
       border: none;
       font-size: 16px;
-      background-color: $lightgrey;
+      background-color: $black;
       box-sizing: border-box;
     }
     &-input::placeholder {

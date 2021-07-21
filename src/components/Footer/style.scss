@@ -5,17 +5,22 @@
   @include flex(column, center, center);
   font-family: $font4;
   box-sizing: border-box;
-  position: relative;
-  //left: 0;
-  //bottom: 0;
-  padding: 30px 10px 30px 10px;
+  // position: absolute;
+  // left: 0;
+  // bottom: 0;
+  padding: 43px 165px 24px;
   margin-top: 120px;
-  width: 100%;
+  max-width: 100vw;
+  // width: 100%;
   // height: 80px;
   z-index: 997;
   font-size: 15px;
-  //background: linear-gradient(0deg, $bg 0%, $bg 50%, transparent 100%);
+  background: $footer-bg;
   user-select: none;
+
+  @include b('tablet') {
+    padding: 43px 30px 24px;
+  }
 
   @include b(500) {
     margin-top: 50px;
@@ -27,27 +32,38 @@
     margin: 15px 0;
   }
 
-  &-social {
+  &-divider{
+    width: 100%;
+    background: $white;
+    opacity: 0.2;
+    height: 1px;
+    content: '';
+    margin-top: 24px;
+  }
+
+  &-links{
     @include flex(row, center, space-between);
     width: 100%;
-    max-width: 320px;
-    margin: 15px 0;
 
-    &-link {
+    @include b('tablet') {
       @include flex(column, center, center);
-      width: 60px;
-      height: 60px;
-      border-radius: 100px;
-      background-color: #ffffff;
-      box-shadow: 0px 12px 40px rgba(84, 84, 212, 0.1);
     }
+  }
+
+  &-social {
+    @include flex(row, center);
+    gap: 16px;
   }
 
   &-copyright {
     @include flex(column, center, center);
     margin: 15px 0;
-    width: 100%;
-    color: $grey2;
-    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: $grey3;
+    font-feature-settings: 'liga' off;
+    font-family: $font4;
+    font-weight: normal;
+    text-align: center;
   }
 }

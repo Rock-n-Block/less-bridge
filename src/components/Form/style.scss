@@ -5,12 +5,13 @@
   @include flex(column, center);
   max-width: 580px;
   min-width: 260px;
-  background-color: $white;
-  box-shadow: $shadow-container;
+  background: $gradient-bg;
+  // box-shadow: $shadow-container;
   padding: 40px;
   margin: 30px;
   user-select: none;
-  border-radius: 30px;
+  font-family: $font5;
+  font-weight: normal;
 
   @include b(500) {
     padding: 20px;
@@ -30,17 +31,16 @@
       width: 100%;
       margin: 10px 0 0 0;
       font-size: 13px;
-      font-weight: 400;
       color: $grey;
-      opacity: 0.6;
+      // opacity: 0.6;
     }
     &-uppercase {
       @include flex(row, center, space-between);
       width: 100%;
       margin: 30px 0 0 0;
       font-size: 16px;
-      font-weight: 400;
-      color: $grey;
+      font-weight: normal;
+      color: $white;
       text-transform: uppercase;
       // opacity: 0.6;
 
@@ -50,15 +50,15 @@
     }
 
     &-left {
-      border: 1px solid #e49710;
       box-sizing: border-box;
       border-radius: 30px;
       font-size: 16px;
-      background-color: white;
-      line-height: 1;
+      font-weight: normal;
+      background-color: $purple2;
+      line-height: 20px;
       text-transform: uppercase;
-      color: #e49710;
-      padding: 5px 10px;
+      color: $white;
+      padding: 2px 10px;
 
       @include b(400) {
         font-size: 12px;
@@ -69,8 +69,9 @@
       @include flex(row, center, flex-end);
       text-align: right;
       font-size: 15px;
+      line-height: 19px;
       font-weight: 400;
-      color: $grey;
+      color: $white;
 
       @include b(400) {
         font-size: 12px;
@@ -123,7 +124,7 @@
       box-sizing: border-box;
       text-align: right;
       font-size: 15px;
-      font-weight: 400;
+      font-weight: 500;
       color: $grey;
     }
   }

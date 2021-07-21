@@ -99,6 +99,8 @@ function App() {
         <Footer />
         <Modal />
       </div>
+      {/* <Footer /> */}
+
     </div>
   );
 }
