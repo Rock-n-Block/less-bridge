@@ -129,10 +129,6 @@
   cursor: pointer;
   text-transform: uppercase;
 
-  @include b(500) {
-    padding: 2px;
-  }
-
   &-inner {
     margin: 0px 10px 0px 5px;
     border: 2px solid $blue;

@@ -76,6 +76,9 @@ input::placeholder {
   background-position: top, center;
   background-repeat: space;
   background-image: url(./assets/icons/background.svg);
+  @include b(500){
+    background-image: none;
+  }
 }
 
 .App-background {
@@ -95,7 +98,9 @@ input::placeholder {
     linear-gradient(147.05deg, #1c0e40 0%, #000000 100%);
   // filter: grayscale(1);
   z-index: -1;
-  box-sizing: border-box;
+  box-sizing: border-box;@include b(500){
+    background: $dark-black;
+  }
 
 }
 
