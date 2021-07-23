@@ -391,9 +391,10 @@ function Form() {
             setAmount('0');
             setReceive('0');
           }
-          setWaiting(false);
+          // setWaiting(false);
         },
       });
+      setWaiting(false);
     } catch (e) {
       console.error(e);
     }
@@ -549,7 +550,7 @@ function Form() {
         error={form.amount}
         type="text"
         placeholder="Enter Amount"
-        value={amount === '0' ? '' : amount}
+        value={amount}
         onChange={handleChangeAmount}
         onFocus={handleFocusAmount}
         label={
