@@ -361,6 +361,7 @@ function Form() {
   };
 
   const swap = async () => {
+    setWaiting(true);
     try {
       toggleModal({ isOpen: false, text: null });
       const areAllFieldsOk = await checkFields({ txType: 'swap' });
@@ -377,7 +378,6 @@ function Form() {
         console.log(balance);
         return;
       }
-      setWaiting(true);
       const blockchain =
         networks && networks.filter((item) => item.key === networkTo)[0].id;
       await contractService.transferToOtherBlockchain({
@@ -391,10 +391,9 @@ function Form() {
             setAmount('0');
             setReceive('0');
           }
-          // setWaiting(false);
+          setWaiting(false);
         },
       });
-      setWaiting(false);
     } catch (e) {
       console.error(e);
     }
