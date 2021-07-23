@@ -9,7 +9,7 @@ export default {
     twitter: 'https://twitter.com/LessToken',
     medium: 'https://less-token.medium.com/',
     telegram: 'https://t.me/lesstokenann',
-    github: 'https://github.com/lesstoken',
+    github: 'https://github.com/LESS-xyz/',
     reddit: '',
     discord: '',
     email: '',
