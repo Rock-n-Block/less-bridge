@@ -1,5 +1,5 @@
 export default {
-  IS_PRODUCTION: true,
+  IS_PRODUCTION: false,
   serverDomain() {
     return this.IS_PRODUCTION
       ? `https://bridge.less.xyz/api/v1`

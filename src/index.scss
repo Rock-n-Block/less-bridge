@@ -1,6 +1,9 @@
 @import "./scss/theme.scss";
 @import "./scss/mixins.scss";
 
+@include font-face("Celias", "../assets/fonts/Celias/Celias-Regular", normal);
+@include font-face("Celias", "../assets/fonts/Celias/Celias-Medium", 500);
+@include font-face("Poppins", "../assets/fonts/Celias/Celias-Bold", 600);
 @include font-face("Poppins", "../assets/fonts/Poppins/Poppins-Thin", 100);
 @include font-face(
   "Poppins",
@@ -46,6 +49,7 @@ body {
   font-weight: 500;
   background-color: $bg;
   box-sizing: border-box;
+  height: 100%;
 }
 
 h1 {
@@ -67,42 +71,44 @@ input::placeholder {
 .App {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   box-sizing: border-box;
   background-position: top, center;
   background-repeat: space;
+  background-image: url(./assets/icons/background.svg);
+  @include b(500){
+    background-image: none;
+  }
 }
 
 .App-background {
   position: absolute;
   top: 0;
   width: 100%;
-  // height: 100%;
-  height: 800px;
+  height: 100%;
+  // height: 800px;
   background-position: top, center;
   background-repeat: repeat;
   background: linear-gradient(
-      180deg,
-      #cae4f7 0%,
-      #d9e9f8 48.84%,
-      #ddf1fb 64.46%,
-      #d6f1fb 100%
+      65.82deg,
+      #0d0c11 27.39%,
+      #180545 68.52%,
+      #2c0c1a 92.68%
     ),
-    #c4c4c4;
+    linear-gradient(147.05deg, #1c0e40 0%, #000000 100%);
   // filter: grayscale(1);
   z-index: -1;
-  box-sizing: border-box;
-
-  @include b(500) {
-    height: 700px;
+  box-sizing: border-box;@include b(500){
+    background: $dark-black;
   }
+
 }
 
 .App-container {
   position: relative;
   margin: auto;
   height: 100%;
-  max-width: 1400px;
+  // max-width: 1400px;
 }
 
 .body {
@@ -176,19 +182,19 @@ input::placeholder {
   line-height: 42px;
   font-size: 14px;
   color: $white;
-  font-weight: 700;
+  font-weight: bold;
   white-space: nowrap;
   border-radius: 60px;
   &-big {
-    @include flex(row, center);
+    @include flex(row, center, center);
+    width: 231px;
+    height: 65px;
     cursor: pointer;
-    background: $blue;
-    padding: 0px 48px 0px 40px;
+    background: $gradient-btn;
     line-height: 62px;
     font-size: 25px;
     color: $white;
-    font-weight: 700;
-    border-radius: 60px;
+    font-weight: bold;
 
     @include b(400) {
       font-size: 20px;
