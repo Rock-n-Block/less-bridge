@@ -392,17 +392,18 @@ function Form() {
         callback: async (res) => {
           console.log("transferToOtherBlockchain", res);
           if (res.status === "SUCCESS") {
-            let result;
-            while (!result) {
-              result = await web3.eth.getTransactionReceipt(res.data);
-            }
+            let timerId = setInterval(async () => {
+              const result = await web3.eth.getTransactionReceipt(res.data);
+              if (result && result.status) {
+                clearInterval(timerId)
+                setAmount("0");
+                setReceive("0");
+                setWaiting(false);
+              }
+            }, 1000);
+          } else {
             setWaiting(false);
-            if (result.status) {
-              setAmount("0");
-              setReceive("0");
-            }
           }
-          setWaiting(false);
         },
       });
     } catch (e) {
