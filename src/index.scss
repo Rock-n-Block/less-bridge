@@ -76,7 +76,7 @@ input::placeholder {
   background-position: top, center;
   background-repeat: space;
   background-image: url(./assets/icons/background.svg);
-  @include b(500){
+  @include b(500) {
     background-image: none;
   }
 }
@@ -98,10 +98,10 @@ input::placeholder {
     linear-gradient(147.05deg, #1c0e40 0%, #000000 100%);
   // filter: grayscale(1);
   z-index: -1;
-  box-sizing: border-box;@include b(500){
+  box-sizing: border-box;
+  @include b(500) {
     background: $dark-black;
   }
-
 }
 
 .App-container {
@@ -174,17 +174,35 @@ input::placeholder {
   }
 }
 
+.text-gradient {
+  display: inline-block;
+
+  font-family: $font5;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+
+  background: $gradient-btn;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: -0.468947px;
+  font-weight: bold;
+
+  &::selection {
+    -webkit-text-fill-color: $white;
+  }
+
+  ::selection {
+    -webkit-text-fill-color: $white;
+  }
+}
+
 .button {
   @include flex(row, center);
   cursor: pointer;
-  background: $blue;
-  padding: 0px 28px 0px 20px;
-  line-height: 42px;
-  font-size: 14px;
-  color: $white;
-  font-weight: bold;
+  gap: 18px;
   white-space: nowrap;
-  border-radius: 60px;
   &-big {
     @include flex(row, center, center);
     width: 231px;
