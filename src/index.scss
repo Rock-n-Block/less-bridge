@@ -223,6 +223,7 @@ input::placeholder {
   }
   &-disabled {
     background: $gradient-button-disabled !important;
+    cursor: default;
   }
 }
 
