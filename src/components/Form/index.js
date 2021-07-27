@@ -412,7 +412,6 @@ function Form() {
         amount,
         receiver: userAddress,
         callback: async (res) => {
-          setTransactionUrl(blockchain);
           console.log("transferToOtherBlockchain", res);
           if (res.status === "SUCCESS") {
             let timerId = setInterval(async () => {
