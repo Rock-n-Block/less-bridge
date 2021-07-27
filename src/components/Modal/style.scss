@@ -35,6 +35,13 @@
     line-height: 26px;
     padding: 20px;
     margin: 10px;
+    &-header{
+      justify-content: flex-start;
+      min-height: 100px;
+      p{
+        margin: 0;
+      }
+    }
   }
 
   &-image {
