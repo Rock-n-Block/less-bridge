@@ -11,6 +11,7 @@ import { ReactComponent as IconLink } from "../../assets/icons/link.svg";
 import { ReactComponent as IconMetamask } from "../../assets/icons/wallets/metamask.svg";
 import { ReactComponent as IconBinance } from "../../assets/icons/wallets/binance.svg";
 import { ReactComponent as IconTronLink } from "../../assets/icons/wallets/tronlink.svg";
+import config from "../../config";
 import {
   userActions,
   modalActions,
@@ -141,8 +142,8 @@ function Form() {
   const isNetworkToBinanceSmartChain = networkTo === "Binance-Smart-Chain";
   const isNetworkToEthereum = networkTo === "Ethereum";
 
-  const toggleModal = ({ isOpen, text }) =>
-    dispatch(modalActions.toggleModal({ isOpen, text }));
+  const toggleModal = ({ isOpen, text, header }) =>
+    dispatch(modalActions.toggleModal({ isOpen, text, header }));
   const showFormError = (data) => dispatch(formActions.showFormError(data));
 
   const getMinimumAmount = () => {
@@ -364,6 +365,27 @@ function Form() {
     return toggleModal({ isOpen: false, text: null });
   };
 
+  const setTransactionUrl = (networkId) => {
+    console.log(networkId);
+    switch (networkId) {
+      case 1:
+      case 42:
+        return "ethereum";
+      case 56:
+      case 97:
+        return "binanceSmartChain";
+      case ["0x89"]:
+      case ["0x13881"]:
+        return "matic";
+      case ["https://api.tronstack.io"]:
+      case ["https://event.nileex.io"]:
+        return "tron";
+
+      default:
+        break;
+    }
+  };
+
   const swap = async () => {
     setWaiting(true);
     try {
@@ -390,12 +412,31 @@ function Form() {
         amount,
         receiver: userAddress,
         callback: async (res) => {
+          setTransactionUrl(blockchain);
           console.log("transferToOtherBlockchain", res);
           if (res.status === "SUCCESS") {
             let timerId = setInterval(async () => {
               const result = await web3.eth.getTransactionReceipt(res.data);
               if (result && result.status) {
-                clearInterval(timerId)
+                toggleModal({
+                  isOpen: true,
+                  text: (
+                    <>
+                      <a
+                        className="link link-transaction"
+                        target="_blank"
+                        href={`${
+                          config.tokenLinks()[setTransactionUrl(blockchain)]
+                        }/${result.transactionHash}`}
+                      >
+                        View transaction
+                        <IconLink />
+                      </a>
+                    </>
+                  ),
+                  header: (<><p className="text-gradient">Transaction complete</p></>),
+                });
+                clearInterval(timerId);
                 setAmount("0");
                 setReceive("0");
                 setWaiting(false);

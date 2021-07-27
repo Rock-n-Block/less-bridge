@@ -2,6 +2,7 @@ const initialState = {
     isOpen: false,
     text: '',
     image: '',
+    header: ''
 }
 
 export default (state = initialState, { type, payload }) => {

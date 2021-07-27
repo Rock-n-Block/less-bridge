@@ -133,6 +133,12 @@ input::placeholder {
   text-decoration: none;
   color: $link;
   opacity: 1;
+  &-transaction {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 15px;
+  }
 }
 
 .link-underlined {
