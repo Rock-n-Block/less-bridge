@@ -433,7 +433,11 @@ function Form() {
                       </a>
                     </>
                   ),
-                  header: (<><p className="text-gradient">Transaction complete</p></>),
+                  header: (
+                    <>
+                      <p className="text-gradient">Transaction complete</p>
+                    </>
+                  ),
                 });
                 clearInterval(timerId);
                 setAmount("0");
@@ -701,9 +705,10 @@ function Form() {
           )
         ) : (
           <div
-            className={`button-big ${approving ? "button-disabled" : ""} mt40`}
+            className={`button-big ${approving || !amount || amount==="0" ? "button-disabled" : ""} mt40`}
             onClick={!approving ? approve : () => {}}
           >
+          {console.log(amount)}
             {approving || waiting ? "Waiting..." : "Approve"}
           </div>
         )}
