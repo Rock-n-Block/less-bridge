@@ -706,7 +706,7 @@ function Form() {
         ) : (
           <div
             className={`button-big ${approving || !amount || amount==="0" ? "button-disabled" : ""} mt40`}
-            onClick={!approving ? approve : () => {}}
+            onClick={!approving && !!amount && amount!=="0" ? approve : () => {}}
           >
           {console.log(amount)}
             {approving || waiting ? "Waiting..." : "Approve"}
