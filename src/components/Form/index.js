@@ -634,7 +634,7 @@ function Form() {
       />
 
       <div className="form-label-under">
-        <div className="form-label-left">Fee: {fee}</div>
+        <div className="form-label-left">Fee: 0</div>
         <div
           className={
             form.amount && form.amount.text.includes("Minimum")
