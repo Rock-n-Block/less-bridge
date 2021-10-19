@@ -8,6 +8,8 @@ import {
   BackendService,
   MaticService,
   TronService,
+  FantomService,
+  AvalancheService,
 } from '../../utils';
 import { userActions, modalActions, walletActions } from '../../redux/actions';
 
@@ -78,6 +80,86 @@ const ContractProvider = ({ children }) => {
     try {
       console.log('loginMetamask', networkFrom, contractDetails);
       const wallet = new MaticService({
+        networkFrom,
+        contractDetails,
+      });
+      setContractService(
+        new ContractService({
+          wallet,
+          networkFrom,
+          contractDetails,
+        }),
+      );
+      setWalletService(wallet);
+      const account = await wallet.getAccount();
+      setUserData(account);
+    } catch (e) {
+      console.error(e);
+      if (!e.errorMsg || e.errorMsg === '') {
+        toggleModal({
+          isOpen: true,
+          text: (
+            <div>
+              <p>Metamask extension is not found.</p>
+              <p>
+                You can install it from{' '}
+                <a href="https://metamask.io" target="_blank">
+                  metamask.io
+                </a>
+              </p>
+            </div>
+          ),
+        });
+      } else {
+        toggleModal({ isOpen: true, text: e.errorMsg });
+      }
+    }
+  };
+
+  const loginAvalanche = async () => {
+    try {
+      console.log('loginAvalanche', networkFrom, contractDetails);
+      const wallet = new AvalancheService({
+        networkFrom,
+        contractDetails,
+      });
+      setContractService(
+        new ContractService({
+          wallet,
+          networkFrom,
+          contractDetails,
+        }),
+      );
+      setWalletService(wallet);
+      const account = await wallet.getAccount();
+      setUserData(account);
+    } catch (e) {
+      console.error(e);
+      if (!e.errorMsg || e.errorMsg === '') {
+        toggleModal({
+          isOpen: true,
+          text: (
+            <div>
+              <p>Metamask extension is not found.</p>
+              <p>
+                You can install it from{' '}
+                <a href="https://metamask.io" target="_blank">
+                  metamask.io
+                </a>
+              </p>
+            </div>
+          ),
+        });
+      } else {
+        toggleModal({ isOpen: true, text: e.errorMsg });
+      }
+    }
+  };
+
+  const loginFantom = async () => {
+    try {
+      console.log('loginFantom', networkFrom, contractDetails);
+      const wallet = new FantomService({
         networkFrom,
         contractDetails,
       });
@@ -222,6 +304,10 @@ const ContractProvider = ({ children }) => {
       )[0];
       const maticChain = dex.filter((item) => item.network === 'Matic')[0];
       const tronChain = dex.filter((item) => item.network === 'Tron')[0];
+      const fantomChain = dex.filter((item) => item.network === 'Fantom')[0];
+      const avalancheChain = dex.filter(
+        (item) => item.network === 'Avalanche',
+      )[0];
       let contractDetails = {
         ADDRESS: {
           TOKEN: {
@@ -229,18 +315,24 @@ const ContractProvider = ({ children }) => {
             'Binance-Smart-Chain': binanceSmartChain.token_address,
             Matic: maticChain.token_address,
             Tron: tronChain.token_address,
+            Fantom: fantomChain.token_address,
+            Avalanche: avalancheChain.token_address,
           },
           SWAP: {
             Ethereum: ethereumChain.swap_address,
             'Binance-Smart-Chain': binanceSmartChain.swap_address,
             Matic: maticChain.swap_address,
             Tron: tronChain.swap_address,
+            Fantom: fantomChain.swap_address,
+            Avalanche: avalancheChain.swap_address,
           },
           FEE: {
             Ethereum: ethereumChain.fee_address,
             'Binance-Smart-Chain': binanceSmartChain.fee_address,
             Matic: maticChain.fee_address,
             Tron: tronChain.fee_address,
+            Fantom: fantomChain.fee_address,
+            Avalanche: avalancheChain.fee_address,
           },
         },
         DECIMALS: {
@@ -249,12 +341,16 @@ const ContractProvider = ({ children }) => {
             'Binance-Smart-Chain': binanceSmartChain.decimals,
             Matic: maticChain.decimals,
             Tron: tronChain.decimals,
+            Fantom: fantomChain.decimals,
+            Avalanche: avalancheChain.decimals,
           },
           SWAP: {
             Ethereum: ethereumChain.decimals,
             'Binance-Smart-Chain': binanceSmartChain.decimals,
             Matic: maticChain.decimals,
             Tron: tronChain.decimals,
+            Fantom: fantomChain.decimals,
+            Avalanche: avalancheChain.decimals,
           },
         },
         ABI: {
@@ -263,12 +359,16 @@ const ContractProvider = ({ children }) => {
             'Binance-Smart-Chain': binanceSmartChain.token_abi,
             Matic: maticChain.token_abi,
             Tron: tronChain.token_abi,
+            Fantom: fantomChain.token_abi,
+            Avalanche: avalancheChain.token_abi,
           },
           SWAP: {
             Ethereum: ethereumChain.swap_abi,
             'Binance-Smart-Chain': binanceSmartChain.swap_abi,
             Matic: maticChain.swap_abi,
             Tron: tronChain.swap_abi,
+            Fantom: fantomChain.swap_abi,
+            Avalanche: avalancheChain.swap_abi,
           },
         },
       };
@@ -298,6 +398,13 @@ const ContractProvider = ({ children }) => {
         loginMatic();
       } else if (walletType === 'tron' || walletTypeOnReload === 'tron') {
         loginTron();
+      } else if (walletType === 'fantom' || walletTypeOnReload === 'fantom') {
+        loginFantom();
+      } else if (
+        walletType === 'avalanche' ||
+        walletTypeOnReload === 'avalanche'
+      ) {
+        loginAvalanche();
       }
       localStorage.setItem('walletTypeOnReload', '');
     })();

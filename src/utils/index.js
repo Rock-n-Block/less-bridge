@@ -3,6 +3,8 @@ export { default as BinanceService } from './binance';
 export { default as MetamaskService } from './metamask';
 export { default as MaticService } from './matic';
 export { default as TronService } from './tron';
+export { default as FantomService } from './fantom';
+export { default as AvalancheService } from './avalanche';
 export { default as ContractService } from './contractService';
 export { getFromStorage, setToStorage } from './localStorage';
 export {

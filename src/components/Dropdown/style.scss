@@ -1,5 +1,5 @@
-@import "../../scss/theme.scss";
-@import "../../scss/mixins.scss";
+@import '../../scss/theme.scss';
+@import '../../scss/mixins.scss';
 
 .dropdown {
   @include flex(column);
@@ -24,7 +24,7 @@
   }
 
   &-list {
-    @include flex(column);
+    @include flex(column, normal, normal, nowrap);
     visibility: hidden;
     position: absolute;
     top: 80px;
@@ -40,7 +40,7 @@
   }
 
   &-list-open {
-    @include flex(column);
+    @include flex(column, normal, normal, nowrap);
     position: absolute;
     top: 80px;
     left: 0px;
