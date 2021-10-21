@@ -41,16 +41,22 @@ export default class ContractService {
 
   allowance = async (address) => {
     // console.log('allowance',address,this.contractAddressSwap)
-    const allowance = await this.contractToken.methods
+    let allowance = await this.contractToken.methods
       .allowance(address, this.contractAddressSwap)
       .call();
+    if (allowance._hex) {
+      allowance = parseInt(allowance._hex);
+    }
     return +new BigNumber(allowance)
       .dividedBy(new BigNumber(10).pow(this.decimals))
       .toString(10);
   };
 
   totalSupply = async () => {
-    const totalSupply = await this.contractToken.methods.totalSupply().call();
+    let totalSupply = await this.contractToken.methods.totalSupply().call();
+    if (totalSupply._hex) {
+      totalSupply = parseInt(totalSupply._hex);
+    }
     return +new BigNumber(totalSupply)
       .dividedBy(new BigNumber(10).pow(this.decimals))
       .toString(10);

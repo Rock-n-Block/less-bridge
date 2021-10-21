@@ -84,6 +84,7 @@ export default class MetamaskService {
 
   approveToken = async (walletAddress, tokenAddress, amount, callback) => {
     try {
+      debugger;
       const contract = this.getContract(
         this.contractAbiToken,
         this.contractAddressToken,
