@@ -22,7 +22,7 @@ export default {
         : 'https://explorer-mumbai.maticvigil.com/address/',
       tron: this.IS_PRODUCTION
         ? 'https://tronscan.org/#/'
-        : 'https://shasta.tronscan.org/#/',
+        : 'https://nile.tronscan.org/#/',
       ethereum: this.IS_PRODUCTION
         ? 'https://etherscan.io'
         : 'https://kovan.etherscan.io',
@@ -47,7 +47,7 @@ export default {
         : 'https://mumbai.polygonscan.com/tx/' + address,
       tron: this.IS_PRODUCTION
         ? 'https://tronscan.org/#/transaction/' + address
-        : 'https://shasta.tronscan.org/#/transaction/' + address,
+        : 'https://nile.tronscan.org/#/transaction/' + address,
       ethereum: this.IS_PRODUCTION
         ? 'https://etherscan.io/tx/' + address
         : 'https://kovan.etherscan.io/tx/' + address,

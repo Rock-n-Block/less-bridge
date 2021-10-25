@@ -139,7 +139,10 @@ export default class MetamaskService {
         signedTransaction,
       );
       console.log(broadcast);
-      callback({ status: broadcast.result ? 'SUCCESS' : 'ERROR' });
+      callback({
+        status: broadcast.result ? 'SUCCESS' : 'ERROR',
+        data: broadcast.txid,
+      });
     } catch (err) {
       callback({ status: 'ERROR' });
       throw Error;

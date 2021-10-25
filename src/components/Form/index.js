@@ -415,6 +415,7 @@ function Form() {
         return 'matic';
       case ['https://api.tronstack.io']:
       case ['https://event.nileex.io']:
+      case 4:
         return 'tron';
       case ['0xfa2']:
       case ['0xfa']:
@@ -433,7 +434,10 @@ function Form() {
     try {
       toggleModal({ isOpen: false, text: null });
       const areAllFieldsOk = await checkFields({ txType: 'swap' });
-      if (!areAllFieldsOk) return;
+      if (!areAllFieldsOk) {
+        setWaiting(false);
+        return;
+      }
       if (isNetworkFromBinanceChain) {
         const blockchain =
           networks && networks.filter((item) => item.key === networkTo)[0].id;
@@ -448,6 +452,8 @@ function Form() {
       }
       const blockchain =
         networks && networks.filter((item) => item.key === networkTo)[0].id;
+      const blockchainFrom =
+        networks && networks.filter((item) => item.key === networkFrom)[0].id;
       await contractService.transferToOtherBlockchain({
         userAddress,
         blockchain,
@@ -457,8 +463,17 @@ function Form() {
           console.log('transferToOtherBlockchain', res);
           if (res.status === 'SUCCESS') {
             let timerId = setInterval(async () => {
-              const result = await web3.eth.getTransactionReceipt(res.data);
-              if (result && result.status) {
+              let result;
+              if (contractService.wallet.name === 'tronlink') {
+                result = await window.tronWeb.trx.getTransaction(res.data);
+              } else {
+                result = await web3.eth.getTransactionReceipt(res.data);
+              }
+              if (
+                (contractService.wallet.name === 'tronlink' &&
+                  result.ret[0].contractRet === 'SUCCESS') ||
+                (result && result.status)
+              ) {
                 toggleModal({
                   isOpen: true,
                   text: (
@@ -467,9 +482,11 @@ function Form() {
                         className="link link-transaction"
                         target="_blank"
                         href={
-                          config.transactionLinks(result.transactionHash)[
-                            setTransactionUrl(blockchain)
-                          ]
+                          config.transactionLinks(
+                            contractService.wallet.name === 'tronlink'
+                              ? result.txID
+                              : result.transactionHash,
+                          )[setTransactionUrl(blockchainFrom)]
                         }>
                         View transaction
                         <IconLink />
@@ -494,7 +511,7 @@ function Form() {
         },
       });
     } catch (e) {
-      console.error(e);
+      console.error(e, 'test');
       setWaiting(false);
     }
   };
