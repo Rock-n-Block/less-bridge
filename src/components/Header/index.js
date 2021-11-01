@@ -1,9 +1,9 @@
-import React from "react";
-import useMedia from "use-media";
+import React from 'react';
+import useMedia from 'use-media';
 
-import config from "../../config";
-import "./style.scss";
-import { ReactComponent as IconLogo } from "../../assets/images/logo.svg";
+import config from '../../config';
+import './style.scss';
+import { ReactComponent as IconLogo } from '../../assets/images/logo.svg';
 // import { ReactComponent as IconFacebook } from "../../assets/icons/social/facebook-circle.svg";
 // import { ReactComponent as IconTelegram } from "../../assets/icons/social/telegram-circle.svg";
 // import { ReactComponent as IconEmail } from "../../assets/icons/social/email-circle.svg";
@@ -13,7 +13,7 @@ import { ReactComponent as IconLogo } from "../../assets/images/logo.svg";
 // import { ReactComponent as IconGithub } from "../../assets/icons/social/github-circle.svg";
 // import { ReactComponent as IconDiscord } from "../../assets/icons/social/discord-circle.svg";
 // import { ReactComponent as IconReddit } from "../../assets/icons/social/reddit-circle.svg";
-import HeaderDropdown from "../HeaderDropdown";
+import HeaderDropdown from '../HeaderDropdown';
 
 function Header() {
   const isMobile = useMedia({ maxWidth: 1000 });
@@ -23,11 +23,11 @@ function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        <div className="header-left-group">
+        {/* <div className="header-left-group">
           <a href="https://less.xyz/" target="_blank" rel="noopener noreferer">
             <IconLogo className="header-logo" />
           </a>
-        </div>
+        </div> */}
 
         {/*{ isMobile &&*/}
         {/*<div*/}
